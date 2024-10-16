@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from "react";
-import logoFullImage from "../../assets/logo-full.svg";
-import arrowRightImage from "../../assets/arrow-right.svg";
+import logoFullImage from "../../../assets/logo-full.svg";
+import arrowRightImage from "../../../assets/arrow-right.svg";
 import "./index.css";
 
 function Login() {
