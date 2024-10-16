@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 
-import logoImage from "../assets/logo.svg";
+// import logoImage from "../../assets/logo.svg";
 import { TODO_LIST } from "./initial-state";
 import { ITodoTypes } from "./types";
 
@@ -59,6 +59,12 @@ function Todo() {
   }, [search, items]);
 
   return (
+    <h1>To Do List</h1>
+    /** TODO: 
+     * fix the close tags
+     * fix tags names
+     * 
+    * 
     <main id="page" className="todo">
       <div>
         <img src={logoImage} alt="Cora" title="Cora"></img>
@@ -131,14 +137,15 @@ function Todo() {
                         </strong>
                       </button>
                     </div>
-                  <div>
-                </li>
-              );
+                    <div>
+                    </li>
+                    );
             })}
-          </ul>
-        </div>
+                  </ul>
+                </div>
       </div>
     </main>
+      */
   );
 }
 
