@@ -9,21 +9,24 @@ import "./todoList.css";
 const TodoList = () => {
   const [tasks, setTasks] = useState<TaskType[] | []>(TODO_LIST);
   const [searchInputValue, setSearchInputValue] = useState("");
-  const [search, setSearch] = useState("");
+  const [searchTasks, setSearchTasks] = useState<[] | TaskType[]>(TODO_LIST);
 
-  const handleChange = (event: ChangeEvent<unknown>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInputValue(event.target.value);
   };
 
-  const handleSearch = (event) => {
+  const handleSearchTaskTitle = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSearch(searchInputValue);
+    const searchTaskTitle = tasks.filter(task => task.title.includes(searchInputValue));
+
+    setSearchTasks(searchInputValue ? searchTaskTitle : tasks);
   };
 
   const handleRemoveTask = (id: string) => {
     const tasksWithoutRemovedTask = tasks.filter(task => task.id !== id);
 
     setTasks(tasksWithoutRemovedTask);
+    setSearchTasks(tasksWithoutRemovedTask)
   };
 
   const handleChangeTaskStatus = (id: string, status: ITodoTypes) => {
@@ -61,25 +64,25 @@ const TodoList = () => {
         </p>
       </article>
       <div className="todo__wrapper">
-        <form className="todo__search" onSubmit={handleSearch}>
+        <form className="todo__search" onSubmit={handleSearchTaskTitle}>
           <input
             id="search"
             className="todo__search__input"
-            placeholder="busca por texto..."
+            placeholder="buscar por nome da task"
             value={searchInputValue}
             onChange={handleChange}
           />
           <button className="todo__search__button" type="submit">buscar</button>
         </form>
         <ul className="todo__list">
-          {tasks.length === 0 && (
+          {searchTasks.length === 0 && (
             <article className="todo__list--no-results">
               <p>
                 <span className="todo__paragraph--bold" >Ops!!!</span> Nenhum resultado foi encontrado 😕
               </p>
             </article>
           )}
-          {tasks.map((task, index) => {
+          {searchTasks.map((task, index) => {
             return (
               <li className="todo__list__item" key={index}>
                 <p className="todo__paragraph--bold" >
