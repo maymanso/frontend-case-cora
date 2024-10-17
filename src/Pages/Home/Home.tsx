@@ -1,42 +1,43 @@
-import logoImage from "../../assets/logo.svg";
-// import Todo from "./Todo";
-// import { IBanking } from "./IBanking";
-
-import "../../App.css";
 import { Link } from "react-router-dom";
+import logoImage from "../../assets/logo.svg";
+import "./home.css";
 
-function Home() {
-  /**
-   * TODO: 
-   * fix tags names
-   * create style with styled-components
-   */
+const Home = () => {
   return (
-    <main id="page">
-      <div>
-        <img src={logoImage} alt="Cora" title="Cora"></img>
-        <h1>Hey There &#128075;</h1>
-        <h2>Tenha um ótimo teste!!!</h2>
-        <p>
-          <strong>Vamos começar?</strong> Como você faria os botões abaixo
-          abrirem as suas respectivas páginas? (Comece pela{" "}
-          <strong>TODO LIST</strong>, pois nela contem os próximos passos)
+    <section className="home">
+      <header>
+        <img className="home__header__image" src={logoImage} alt="Logo do banco Cora" title="Cora"></img>
+        <h1 className="home__header__title--primary" > Hey There 👋 </h1>
+        <h2 className="home__header__title--secondary" >Tenha um ótimo teste!!!</h2>
+      </header>
+      <article className="home__article">
+        <p className="home__paragraph">
+          <span className="home__paragraph--bold" >Vamos começar?</span> Como você faria os botões abaixo
+          abrirem as suas respectivas páginas? Comece pela
+          <span className="home__paragraph--bold"> TODO LIST</span>, pois nela contem os próximos passos
         </p>
-        <p className="disclaimer">
-          &#9888; Você pode encontrar alguns <strong>erros</strong> no meio do
-          caminho, não desanime e fique atento para conseguir{" "}
-          <strong>visualizar</strong> e <strong>renderizar</strong> as páginas.
-        </p>
-        <ul className="buttons">
-          <Link to="/todo" >
-            TO-DO LIST
-          </Link>
-          <Link to="/iBank" >
-            IBANKING
-          </Link>
+      </article>
+      <article className="home__article--disclaimer">
+        <p className="home__paragraph">
+          ⚠ Você pode encontrar alguns <span>erros</span> no meio do
+          caminho, não desanime e fique atento para conseguir
+          <span className="home__paragraph--bold"> visualizar</span> e <span className="home__paragraph--bold">renderizar</span> as páginas.</p>
+      </article>
+      <nav className="home__nav">
+        <ul className="home__nav__list">
+          <li>
+            <Link to="/todo-list" className="home__nav__link">
+              TO-DO LIST
+            </Link>
+          </li>
+          <li>
+            <Link to="/login" className="home__nav__link" >
+              LOGIN
+            </Link>
+          </li>
         </ul>
-      </div>
-    </main>
+      </nav>
+    </section>
   );
 }
 
