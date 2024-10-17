@@ -2,12 +2,12 @@ import { useState, ChangeEvent } from "react";
 
 import logoImage from "../../assets/logo.svg";
 import { TODO_LIST } from "./initial-state";
-import { ITodoTypes } from "./types";
+import { TaskStatusType, TaskType } from "../../types/todoList.type";
 
 import "./todoList.css";
 
 const TodoList = () => {
-  const [tasks, setTasks] = useState(TODO_LIST);
+  const [tasks, setTasks] = useState<TaskType[] | []>(TODO_LIST);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [search, setSearch] = useState("");
 
