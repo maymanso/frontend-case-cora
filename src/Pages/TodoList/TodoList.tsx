@@ -7,7 +7,7 @@ import { ITodoTypes } from "./types";
 import "./todoList.css";
 
 const TodoList = () => {
-  const [items, setItems] = useState(TODO_LIST);
+  const [tasks, setTasks] = useState(TODO_LIST);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [search, setSearch] = useState("");
 
@@ -36,18 +36,18 @@ const TodoList = () => {
     const reversedStatus = status === "pending" ? "pending" : "done";
     const editedItems = [];
 
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === id) {
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].id === id) {
         editedItems.push({
-          ...items[i],
+          ...tasks[i],
           status: reversedStatus,
         });
       } else {
-        editedItems.push(items[i]);
+        editedItems.push(tasks[i]);
       }
     }
 
-    setItems(editedItems);
+    setTasks(editedItems);
   };
 
   return (
@@ -78,29 +78,29 @@ const TodoList = () => {
           <button className="todo__search__button" type="submit">buscar</button>
         </form>
         <ul className="todo__list">
-          {items.length === 0 && (
+          {tasks.length === 0 && (
             <article className="todo__list--no-results">
               <p>
                 <span className="todo__paragraph--bold" >Ops!!!</span> Nenhum resultado foi encontrado 😕
               </p>
             </article>
           )}
-          {items.map((item, index) => {
+          {tasks.map((task, index) => {
             return (
               <li className="todo__list__item" key={index}>
                 <p className="todo__paragraph--bold" >
                   {index + 1}
-                  {item.required ? "*" : ""}.
+                  {task.required ? "*" : ""}.
                 </p>
                 <div className="todo__content">
                   <h3 className="todo__content__title">
-                    {item.title}
-                    <span data-type={item.status}>{item.status}</span>
+                    {task.title}
+                    <span data-type={task.status}>{task.status}</span>
                   </h3>
-                  <p className="todo__content__paragraph">{item.description}</p>
-                  {item.links && item.links.length > 0 && (
+                  <p className="todo__content__paragraph">{task.description}</p>
+                  {task.links && task.links.length > 0 && (
                     <div className="todo__links">
-                      {item.links.map((link) => (
+                      {task.links.map((link) => (
                         <a key={link.name} target="_blank" href={link.url}>
                           {link.name}
                         </a>
@@ -109,17 +109,17 @@ const TodoList = () => {
                   )}
                 </div>
                 <div className="todo__actions">
-                  <button onClick={() => handleDeleteTask(item.uuid)}>
+                  <button onClick={() => handleDeleteTask(task.id)}>
                     delete
                   </button>
                   <button
                     onClick={() =>
-                      handleChangeTaskStatus(item.id, item.status)
+                      handleChangeTaskStatus(task.id, task.status)
                     }
                   >
                     change to
                     <span className="todo__paragraph--bold" >
-                      {item.status === "done" ? "pending" : "done"}
+                      {task.status === "done" ? "pending" : "done"}
                     </span>
                   </button>
                 </div>
