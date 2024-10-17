@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../Pages/Home/Home";
-import TodoList from "../Pages/TodoList/TodoList";
-import { Login } from "../Pages/Login/Login";
+import { IBanking } from "../Pages/IBanking";
+import Todo from "../Pages/Todo";
 
 const router = createBrowserRouter([
   {
@@ -9,12 +9,12 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
-    path: 'login',
-    element: <Login />
+    path: 'iBank',
+    element: <IBanking />
   },
   {
-    path: 'todo-list',
-    element: <TodoList />
+    path: 'todo',
+    element: <Todo />
   }
 ]);
 
