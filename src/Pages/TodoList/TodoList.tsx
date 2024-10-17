@@ -89,7 +89,7 @@ const TodoList = () => {
             return (
               <li className="todo__list__item" key={index}>
                 <p className="todo__paragraph--bold" >
-                  {index}
+                  {index + 1}
                   {item.required ? "*" : ""}.
                 </p>
                 <div className="todo__content">
