@@ -20,16 +20,10 @@ const TodoList = () => {
     setSearch(searchInputValue);
   };
 
-  const handleDeleteTask = (id: number) => {
-    const editedItems = [];
+  const handleRemoveTask = (id: string) => {
+    const tasksWithoutRemovedTask = tasks.filter(task => task.id !== id);
 
-    items.map((item) => {
-      if (item.id !== id) {
-        editedItems.push(item);
-      }
-    })
-
-    setItems(editedItems);
+    setTasks(tasksWithoutRemovedTask);
   };
 
   const handleChangeTaskStatus = (id: string, status: ITodoTypes) => {
@@ -109,7 +103,7 @@ const TodoList = () => {
                   )}
                 </div>
                 <div className="todo__actions">
-                  <button onClick={() => handleDeleteTask(task.id)}>
+                  <button onClick={() => handleRemoveTask(task.id)}>
                     delete
                   </button>
                   <button
