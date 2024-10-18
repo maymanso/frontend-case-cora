@@ -1,53 +1,45 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useMemo, useCallback } from "react";
 
 import logoImage from "../../assets/logo.svg";
 import { TODO_LIST } from "./initial-state";
-import { ITodoTypes } from "./types";
+import { TaskStatusType, TaskType } from "../../types/todoList.type";
 
 import "./todoList.css";
 
 const TodoList = () => {
-  const [items, setItems] = useState(TODO_LIST);
+  const [tasks, setTasks] = useState<TaskType[] | []>(TODO_LIST);
   const [searchInputValue, setSearchInputValue] = useState("");
-  const [search, setSearch] = useState("");
 
-  const handleChange = (event: ChangeEvent<unknown>) => {
+  const searchTasks = useMemo(() => {
+    return tasks.filter(task => task.title.includes(searchInputValue));
+  }, [tasks, searchInputValue]);
+
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setSearchInputValue(event.target.value);
-  };
+  }, []);
 
-  const handleSearch = (event) => {
+  const handleOnSubmit = useCallback((event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSearch(searchInputValue);
+  }, [])
+
+  const handleRemoveTask = (id: string) => {
+    const tasksWithoutRemovedTask = tasks.filter(task => task.id !== id);
+
+    setTasks(tasksWithoutRemovedTask);
   };
 
-  const handleDeleteTask = (id: number) => {
-    const editedItems = [];
+  const handleChangeTaskStatus = (id: string, status: TaskStatusType) => {
+    const updateTaskStatus: TaskStatusType = status === "pending" ? "done" : "pending";
 
-    items.map((item) => {
-      if (item.id !== id) {
-        editedItems.push(item);
-      }
-    })
+    const updatedTasks = tasks.map(task =>
+      task.id === id ? {
+        ...task,
+        status: updateTaskStatus
+      } :
+        task
+    );
 
-    setItems(editedItems);
-  };
-
-  const handleChangeTaskStatus = (id: string, status: ITodoTypes) => {
-    const reversedStatus = status === "pending" ? "pending" : "done";
-    const editedItems = [];
-
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === id) {
-        editedItems.push({
-          ...items[i],
-          status: reversedStatus,
-        });
-      } else {
-        editedItems.push(items[i]);
-      }
-    }
-
-    setItems(editedItems);
+    setTasks(updatedTasks);
   };
 
   return (
@@ -67,40 +59,40 @@ const TodoList = () => {
         </p>
       </article>
       <div className="todo__wrapper">
-        <form className="todo__search" onSubmit={handleSearch}>
+        <form className="todo__search" onSubmit={handleOnSubmit}>
           <input
             id="search"
             className="todo__search__input"
-            placeholder="busca por texto..."
+            placeholder="buscar por nome da task"
             value={searchInputValue}
             onChange={handleChange}
           />
           <button className="todo__search__button" type="submit">buscar</button>
         </form>
         <ul className="todo__list">
-          {items.length === 0 && (
+          {searchTasks.length === 0 && (
             <article className="todo__list--no-results">
               <p>
                 <span className="todo__paragraph--bold" >Ops!!!</span> Nenhum resultado foi encontrado 😕
               </p>
             </article>
           )}
-          {items.map((item, index) => {
+          {searchTasks.map((task, index) => {
             return (
               <li className="todo__list__item" key={index}>
                 <p className="todo__paragraph--bold" >
-                  {index}
-                  {item.required ? "*" : ""}.
+                  {task.ref}
+                  {task.required ? "*" : ""}.
                 </p>
                 <div className="todo__content">
                   <h3 className="todo__content__title">
-                    {item.title}
-                    <span data-type={item.status}>{item.status}</span>
+                    {task.title}
+                    <span data-type={task.status}>{task.status}</span>
                   </h3>
-                  <p className="todo__content__paragraph">{item.description}</p>
-                  {item.links && item.links.length > 0 && (
+                  <p className="todo__content__paragraph">{task.description}</p>
+                  {task.links && task.links.length > 0 && (
                     <div className="todo__links">
-                      {item.links.map((link) => (
+                      {task.links.map((link) => (
                         <a key={link.name} target="_blank" href={link.url}>
                           {link.name}
                         </a>
@@ -109,17 +101,16 @@ const TodoList = () => {
                   )}
                 </div>
                 <div className="todo__actions">
-                  <button onClick={() => handleDeleteTask(item.uuid)}>
+                  <button onClick={() => handleRemoveTask(task.id)}>
                     delete
                   </button>
                   <button
                     onClick={() =>
-                      handleChangeTaskStatus(item.id, item.status)
+                      handleChangeTaskStatus(task.id, task.status)
                     }
                   >
-                    change to
                     <span className="todo__paragraph--bold" >
-                      {item.status === "done" ? "pending" : "done"}
+                      {task.status === "done" ? "pending" : "done"}
                     </span>
                   </button>
                 </div>
