@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useMemo, useCallback } from "react";
 
 import logoImage from "../../assets/logo.svg";
 import { TODO_LIST } from "./initial-state";
@@ -9,24 +9,23 @@ import "./todoList.css";
 const TodoList = () => {
   const [tasks, setTasks] = useState<TaskType[] | []>(TODO_LIST);
   const [searchInputValue, setSearchInputValue] = useState("");
-  const [searchTasks, setSearchTasks] = useState<[] | TaskType[]>(TODO_LIST);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const searchTasks = useMemo(() => {
+    return tasks.filter(task => task.title.includes(searchInputValue));
+  }, [tasks, searchInputValue]);
+
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setSearchInputValue(event.target.value);
-  };
+  }, []);
 
-  const handleSearchTaskTitle = (event: ChangeEvent<HTMLFormElement>) => {
+  const handleOnSubmit = useCallback((event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const searchTaskTitle = tasks.filter(task => task.title.includes(searchInputValue));
-
-    setSearchTasks(searchInputValue ? searchTaskTitle : tasks);
-  };
+  }, [])
 
   const handleRemoveTask = (id: string) => {
     const tasksWithoutRemovedTask = tasks.filter(task => task.id !== id);
 
     setTasks(tasksWithoutRemovedTask);
-    setSearchTasks(tasksWithoutRemovedTask)
   };
 
   const handleChangeTaskStatus = (id: string, status: TaskStatusType) => {
@@ -36,13 +35,11 @@ const TodoList = () => {
       task.id === id ? {
         ...task,
         status: updateTaskStatus
-      }
-        :
+      } :
         task
     );
 
     setTasks(updatedTasks);
-    setSearchTasks(updatedTasks)
   };
 
   return (
@@ -62,7 +59,7 @@ const TodoList = () => {
         </p>
       </article>
       <div className="todo__wrapper">
-        <form className="todo__search" onSubmit={handleSearchTaskTitle}>
+        <form className="todo__search" onSubmit={handleOnSubmit}>
           <input
             id="search"
             className="todo__search__input"
