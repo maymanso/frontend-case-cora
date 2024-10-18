@@ -29,22 +29,20 @@ const TodoList = () => {
     setSearchTasks(tasksWithoutRemovedTask)
   };
 
-  const handleChangeTaskStatus = (id: string, status: ITodoTypes) => {
-    const reversedStatus = status === "pending" ? "pending" : "done";
-    const editedItems = [];
+  const handleChangeTaskStatus = (id: string, status: TaskStatusType) => {
+    const updateTaskStatus: TaskStatusType = status === "pending" ? "done" : "pending";
 
-    for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].id === id) {
-        editedItems.push({
-          ...tasks[i],
-          status: reversedStatus,
-        });
-      } else {
-        editedItems.push(tasks[i]);
+    const updatedTasks = tasks.map(task =>
+      task.id === id ? {
+        ...task,
+        status: updateTaskStatus
       }
-    }
+        :
+        task
+    );
 
-    setTasks(editedItems);
+    setTasks(updatedTasks);
+    setSearchTasks(updatedTasks)
   };
 
   return (
@@ -114,7 +112,6 @@ const TodoList = () => {
                       handleChangeTaskStatus(task.id, task.status)
                     }
                   >
-                    change to
                     <span className="todo__paragraph--bold" >
                       {task.status === "done" ? "pending" : "done"}
                     </span>
