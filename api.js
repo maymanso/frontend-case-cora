@@ -13,9 +13,9 @@ app.get("/health-check", (_, res) => {
 });
 
 app.post("/auth", (req, res) => {
-  const { cpf, password } = req.body;
+  const { login, password } = req.body;
 
-  if (cpf === user.cpf && password === user.password)
+  if (login === user.login && password === user.password)
     return res.status(200).json({
       token: user.token,
     });
