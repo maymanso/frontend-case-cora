@@ -1,11 +1,20 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import logoFullImage from "../../assets/logo-full.svg";
 import arrowRightImage from "../../assets/arrow-right.svg";
 import "./login.css";
+import useAuthStore from "../../store/auth.store";
+import { AuthStoreType } from "../../types/auth.type";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 const Login = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+  const toast = useToast();
+
+  const { loginService, isAuthenticated, errorMessage } = useAuthStore() as AuthStoreType;
 
   const handleChangeLogin = (event: ChangeEvent<HTMLInputElement>) => {
     setLogin(event.target.value)
@@ -15,12 +24,36 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleAuth = () => {
-    console.log({
-      cpf,
-      password,
-    });
+  const handleSubmitAuth = async (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!login || !password) {
+      return toast({
+        title: "Digite um login e senha válidos",
+        duration: 3000,
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+      })
+    }
+    await loginService({ login, password })
   };
+
+
+  useEffect(() => {
+    if (isAuthenticated) return navigate("/ibanking")
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast({
+        title: errorMessage,
+        duration: 3000,
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+      })
+    }
+  }, [errorMessage])
 
   return (
     <section className="login">
@@ -42,12 +75,11 @@ const Login = () => {
           placeholder="Digite sua senha"
           onChange={handleChangePassword}
         />
+        <button className="login__button" type="submit">
+          Continuar
+          <img src={arrowRightImage} />
+        </button>
       </form>
-
-      <button className="login__button" onClick={handleAuth}>
-        Continuar
-        <img src={arrowRightImage} />
-      </button>
     </section>
   );
 }
