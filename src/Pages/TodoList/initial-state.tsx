@@ -1,4 +1,4 @@
-import { TaskType } from "../../types/todoList.type";
+import { TaskType } from "../../types/todoList/todoList.type";
 
 export const TODO_LIST: TaskType[] = [
   {
@@ -16,7 +16,7 @@ export const TODO_LIST: TaskType[] = [
         correta de tasks? Parabéns, você finalizou a sua primeira task &#127881;
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
   },
   {
@@ -41,7 +41,7 @@ export const TODO_LIST: TaskType[] = [
         5. Alguns links não estão funcionando.
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
   },
   {
@@ -54,7 +54,7 @@ export const TODO_LIST: TaskType[] = [
         alguma coisa errada com o CSS dessa página :/
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
     links: [
       {
@@ -77,7 +77,7 @@ export const TODO_LIST: TaskType[] = [
         <strong>Info:</strong> Sinta-se livre para fazer melhorias :)
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
     links: [
       {
