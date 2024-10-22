@@ -1,0 +1,26 @@
+.header {
+  height: 70px;
+  background-color: white;
+  width: 100vw;
+  padding-top: 16px;
+  border-bottom: 1px solid var(--color-main);
+}
+
+.header__nav {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15%;
+}
+
+.header__logo {
+  width: 40px;
+}
+
+.header__button {
+  padding: 4px 16px;
+  border-radius: 5px;
+  color: var(--color-main);
+  border: 1px solid var(--color-main);
+}
