@@ -3,6 +3,6 @@ const TransactionsController = require('../../controller/transactions/transactio
 
 const router = express();
 
-router.get('/bankBalance', TransactionsController.getBankTransactions);
+router.get('/bank-balance', TransactionsController.getBankTransactions);
 
 module.exports = router;
