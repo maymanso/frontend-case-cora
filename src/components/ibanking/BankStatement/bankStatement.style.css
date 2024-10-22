@@ -1,0 +1,46 @@
+.bankStatement__container {
+  border: 1px solid #DEE4E9, ;
+  border-radius: 16px;
+  padding: 32px 16px;
+}
+
+.bankStatement__verticalLine {
+  border-left: 1px solid #DEE4E9;
+  height: 16px;
+  margin-left: 20px;
+}
+
+.bankStatement__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.bankStatement__article {
+  display: flex;
+  align-items: center;
+}
+
+.bankStatement__title--credit,
+.bankStatement__amount--credit {
+  color: #1A93DA;
+}
+
+.bankStatement__title--refund,
+.bankStatement__title--credit,
+.bankStatement__title--debit {
+  margin-left: 16px;
+  font-weight: 400;
+}
+
+.bankStatement__amount--credit,
+.bankStatement__amount--debit,
+.bankStatement__amount--refund {
+  font-weight: 600;
+  text-align: right;
+}
+
+.bankStatement__amount--refund {
+  text-decoration: line-through;
+}
