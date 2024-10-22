@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig } from 'axios';
 import Cookie from 'js-cookie';
 
-export default class AxiosService {
+export default class BaseService {
   api: AxiosInstance;
 
   constructor() {
