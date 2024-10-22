@@ -2,7 +2,7 @@ import { useState, ChangeEvent, useMemo, useCallback } from "react";
 
 import logoImage from "../../assets/logo.svg";
 import { TODO_LIST } from "./initial-state";
-import { TaskStatusType, TaskType } from "../../types/todoList.type";
+import { TaskStatusType, TaskType } from "../../types/todoList/todoList.type";
 
 import "./todoList.css";
 
