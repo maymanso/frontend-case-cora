@@ -31,8 +31,8 @@ const Home = () => {
             </Link>
           </li>
           <li>
-            <Link to="/ibanking" className="home__nav__link" >
-              IBANKING
+            <Link to="/login" className="home__nav__link" >
+              LOGIN
             </Link>
           </li>
         </ul>
