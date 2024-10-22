@@ -1,7 +1,15 @@
 import { useState, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { AuthStoreType } from "../../types/auth/auth.type";
+
+import useAuthStore from "../../store/auth/auth.store";
+
+import { useToast } from "@chakra-ui/react";
 import logoFullImage from "../../assets/logo-full.svg";
 import arrowRightImage from "../../assets/arrow-right.svg";
 import "./login.css";
+
 
 const Login = () => {
   const [cpf, setCpf] = useState("");
