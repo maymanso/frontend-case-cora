@@ -2,8 +2,8 @@ import { useState, ChangeEvent, useEffect } from "react";
 import logoFullImage from "../../assets/logo-full.svg";
 import arrowRightImage from "../../assets/arrow-right.svg";
 import "./login.css";
-import useAuthStore from "../../store/auth.store";
-import { AuthStoreType } from "../../types/auth.type";
+import useAuthStore from "../../store/auth/auth.store";
+import { AuthStoreType } from "../../types/auth/auth.type";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 

@@ -1,0 +1,9 @@
+.ibanking {
+  width: 100%;
+}
+
+.ibanking__container {
+  width: 80vw;
+  padding-top: 60px;
+  margin-left: 15vw;
+}

@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import Cookie from 'js-cookie';
 
-import AuthService from '../service/auth.service';
-import { AuthStoreType, DataLoginType, UserLoginResponseType } from '../types/auth.type';
+import AuthService from '../../service/auth.service';
+import { AuthStoreType, DataLoginType, UserLoginResponseType } from '../../types/auth/auth.type';
 
 const authService = new AuthService()
 
