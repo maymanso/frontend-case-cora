@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import IBankingService from '../../service/ibanking.service';
+import IBankingService from '../../service/ibanking/ibanking.service';
 import { TransacionStoreType } from '../../types/ibanking/transaction.type';
 
 const ibankingService = new IBankingService()
