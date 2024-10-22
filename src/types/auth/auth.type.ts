@@ -7,6 +7,7 @@ export type AuthStoreType = {
   isAuthenticated: boolean;
   errorMessage: string;
   loginService: (data: DataLoginType) => Promise<void>;
+  logout: () => void;
 };
 
 export type UserLoginResponseType = {
