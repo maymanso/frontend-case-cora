@@ -9,6 +9,10 @@ const authService = new AuthService()
 const useAuthStore = create<AuthStoreType>((set) => ({
   isAuthenticated: false,
   errorMessage: "",
+  logout: () => {
+    Cookie.remove('token')
+    set({ isAuthenticated: false })
+  },
   loginService: async (data: DataLoginType) => {
     try {
       const response = await authService.login(data) as UserLoginResponseType;

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import logoImage from "../../assets/logo.svg";
 import "./home.css";
+import NavLink from "../../components/common/NavLink/NavLink";
 
 const Home = () => {
   return (
@@ -26,14 +26,14 @@ const Home = () => {
       <nav className="home__nav">
         <ul className="home__nav__list">
           <li>
-            <Link to="/todo-list" className="home__nav__link">
+            <NavLink url="/todo-list">
               TO-DO LIST
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/ibanking" className="home__nav__link" >
+            <NavLink url="/ibanking">
               IBANKING
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
