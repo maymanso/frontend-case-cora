@@ -10,7 +10,6 @@ import logoFullImage from "../../assets/logo-full.svg";
 import arrowRightImage from "../../assets/arrow-right.svg";
 import "./login.css";
 
-
 const Login = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
