@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import Cookie from 'js-cookie';
 
-import AuthService from '../../service/auth.service';
+import AuthService from '../../service/auth/auth.service';
 import { AuthStoreType, DataLoginType, UserLoginResponseType } from '../../types/auth/auth.type';
 
 const authService = new AuthService()
@@ -9,6 +9,10 @@ const authService = new AuthService()
 const useAuthStore = create<AuthStoreType>((set) => ({
   isAuthenticated: false,
   errorMessage: "",
+  logout: () => {
+    Cookie.remove('token')
+    set({ isAuthenticated: false, errorMessage: "" })
+  },
   loginService: async (data: DataLoginType) => {
     try {
       const response = await authService.login(data) as UserLoginResponseType;

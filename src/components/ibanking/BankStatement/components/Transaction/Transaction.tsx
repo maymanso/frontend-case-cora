@@ -6,7 +6,7 @@ interface TransactionProps {
   title: string;
   description: string;
   date: string;
-  amount: string;
+  amount: number;
   icon: string
 }
 const Transaction: React.FC<TransactionProps> = ({ type, title, date, amount, description, icon }) => {
@@ -31,7 +31,7 @@ const Transaction: React.FC<TransactionProps> = ({ type, title, date, amount, de
         {formattedDateAndTime(date)}
       </p>
       <p className={`bankStatement__amount--${type}`}>
-        {`${amountType[type]} R$ ${amount}`}
+        {`${amountType[type]} R$ ${amount / 10},00`}
       </p>
     </article>
   );

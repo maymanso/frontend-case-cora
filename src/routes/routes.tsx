@@ -4,6 +4,7 @@ import TodoList from "../Pages/TodoList/TodoList";
 import IBanking from "../Pages/IBanking/IBanking";
 import Login from "../Pages/Login/Login";
 import PrivateRoutes from "./private.routes";
+import PublicRoutes from "./public.routes";
 
 const router = createBrowserRouter([
   {
@@ -11,12 +12,18 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
-    path: 'todo-list',
-    element: <TodoList />
-  },
-  {
-    path: 'login',
-    element: <Login />
+    path: '/',
+    element: <PublicRoutes />,
+    children: [
+      {
+        path: 'todo-list',
+        element: < TodoList />
+      },
+      {
+        path: 'login',
+        element: < Login />
+      },
+    ]
   },
   {
     path: '/ibanking',
