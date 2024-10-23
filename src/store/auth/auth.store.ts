@@ -11,7 +11,7 @@ const useAuthStore = create<AuthStoreType>((set) => ({
   errorMessage: "",
   logout: () => {
     Cookie.remove('token')
-    set({ isAuthenticated: false })
+    set({ isAuthenticated: false, errorMessage: "" })
   },
   loginService: async (data: DataLoginType) => {
     try {
