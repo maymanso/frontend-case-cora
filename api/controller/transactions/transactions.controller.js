@@ -9,6 +9,7 @@ class TransactionsController {
     return this.transactions.results.map(result => {
       const dayAmount = result.items.reduce((acc, item) => {
         acc[item.entry] = (acc[item.entry] || 0) + item.amount;
+        return acc;
       }, { DEBIT: 0, CREDIT: 0 });
 
       return {

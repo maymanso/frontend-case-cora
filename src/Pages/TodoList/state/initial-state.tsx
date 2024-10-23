@@ -82,8 +82,8 @@ transação (tela feita na task anterior).
 \n
 **Note:** Utilize os <u>buttons</u> que aparecem no topo da
 tela de lista de transações para fazer o filtro.
-**Important:** O tipo da transação é a chave{" "}
-**entry**, com valor **DEBIT** ou{" "}
+**Important:** O tipo da transação é a chave
+**entry**, com valor **DEBIT** ou
 **CREDIT**, dentro do response retornado pela api.
 \n
 [figma](https://www.figma.com/file/TXxt0VFxbzDoho4tmt9XPP/Teste_FrontWeb?type=design&node-id=5-3378&mode=dev)`,
@@ -277,7 +277,7 @@ Utilizar jest e react-testing-library para testar as aplicação.
   },
   {
     id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb7m",
-    ref: 22,
+    ref: 23,
     title: "Criar pagina de criação de tarefa",
     description: `
 Não existe página para criar uma tarefa.

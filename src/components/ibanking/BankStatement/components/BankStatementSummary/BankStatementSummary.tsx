@@ -9,7 +9,7 @@ interface BankStatementSummaryProps {
 const BankStatementSummary: React.FC<BankStatementSummaryProps> = ({ date, amount }) => (
   <article className='bankStatementSummary'>
     <h3 className='bankStatementSummary__title'>{date}</h3>
-    <p>saldo do dia <span className='bankStatementSummary__amount'>{`R$ ${amount / 10},00`}</span></p>
+    <p>saldo do dia <span className='bankStatementSummary__amount'>{`R$ ${amount / 100},00`}</span></p>
   </article>
 );
 
