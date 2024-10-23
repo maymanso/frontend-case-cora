@@ -1,27 +1,31 @@
 import logoImage from "../../assets/logo.svg";
 import "./home.css";
 import NavLink from "../../components/common/NavLink/NavLink";
+import { LogoCora } from "../../style/common/LogoCora/coraLogo.style";
+import { TitlePrimary, TitleSecondary } from "../../style/common/Titles/titles.style";
+import { Paragraph, Span } from "../../style/common/Paragraphs/paragraphs.style";
 
 const Home = () => {
   return (
     <section className="home">
       <header>
-        <img className="home__header__image" src={logoImage} alt="Logo do banco Cora" title="Cora"></img>
-        <h1 className="home__header__title--primary" > Hey There 👋 </h1>
-        <h2 className="home__header__title--secondary" >Tenha um ótimo teste!!!</h2>
+        <LogoCora src={logoImage} alt="Logo do banco Cora" title="Cora" />
+        <TitlePrimary>Hey There 👋</TitlePrimary>
+        <TitleSecondary $color="--color-main">Tenha um ótimo teste!!!</TitleSecondary>
       </header>
       <article className="home__article">
-        <p className="home__paragraph">
-          <span className="home__paragraph--bold" >Vamos começar?</span> Como você faria os botões abaixo
+        <Paragraph $color="--color-gray" $fontSize="1.8em">
+          <Span $bold>Vamos começar?</Span> Como você faria os botões abaixo
           abrirem as suas respectivas páginas? Comece pela
-          <span className="home__paragraph--bold"> TODO LIST</span>, pois nela contem os próximos passos
-        </p>
+          <Span $bold> TODO LIST</Span>, pois nela contem os próximos passos
+        </Paragraph>
       </article>
       <article className="home__article--disclaimer">
-        <p className="home__paragraph">
-          ⚠ Você pode encontrar alguns <span>erros</span> no meio do
+        <Paragraph $color="--color-gray">
+          ⚠ Você pode encontrar alguns <Span $bold>erros</Span> no meio do
           caminho, não desanime e fique atento para conseguir
-          <span className="home__paragraph--bold"> visualizar</span> e <span className="home__paragraph--bold">renderizar</span> as páginas.</p>
+          <Span $bold> visualizar</Span> e <Span $bold>renderizar</Span> as páginas.
+        </Paragraph>
       </article>
       <nav className="home__nav">
         <ul className="home__nav__list">
