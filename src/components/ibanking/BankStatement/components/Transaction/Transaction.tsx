@@ -31,7 +31,7 @@ const Transaction: React.FC<TransactionProps> = ({ type, title, date, amount, de
         {formattedDateAndTime(date)}
       </p>
       <p className={`bankStatement__amount--${type}`}>
-        {`${amountType[type]} R$ ${amount / 10},00`}
+        {`${amountType[type]} R$ ${amount / 100},00`}
       </p>
     </article>
   );
