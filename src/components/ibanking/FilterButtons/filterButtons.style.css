@@ -1,20 +1,17 @@
 .filterButtons {
-  margin-bottom: 40px;
+  margin-bottom: 4em;
 }
 
-.filterButtons__button {
+.filterButtons__button,
+.filterButtons__button--select {
   background-color: #F0F4F8;
-  height: 32px;
-  border-radius: 32px;
-  padding: 4px 16px;
-  margin-right: 16px;
+  border-radius: 3.2em;
+  padding: 0.3em 1em;
+  margin-right: 1.6em;
+  font-size: 1.6em;
 }
 
 .filterButtons__button--select {
   color: #fff;
   background-color: #3B3B3B;
-  height: 32px;
-  border-radius: 32px;
-  padding: 4px 16px;
-  margin-right: 16px;
 }
