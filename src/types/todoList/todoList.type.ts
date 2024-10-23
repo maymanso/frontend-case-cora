@@ -9,7 +9,7 @@ export interface TaskType {
   id: string;
   ref: number;
   title: string;
-  description: JSX.Element;
+  description: string;
   status: TaskStatusType;
   required: boolean;
   links?: TaskLinkType[]

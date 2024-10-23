@@ -64,7 +64,7 @@ const Login = () => {
           id="login"
           value={login}
           className="login__input"
-          placeholder="Insira seu CPF"
+          placeholder="Insira seu e-mail ou CPF"
           onChange={handleChangeLogin}
         />
         <input

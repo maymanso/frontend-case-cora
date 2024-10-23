@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ isLogin, children }) => {
       <header className='header'>
         <nav className='header__nav'>
           <Link to="/" >
-            <img src={logoImage} className='header__logo' />
+            <img src={logoImage} className='header__logo' alt="Logo do banco Cora" title="Cora" />
           </Link>
           {isLogin ?
             <button className='header__button' onClick={handleLogout}>
