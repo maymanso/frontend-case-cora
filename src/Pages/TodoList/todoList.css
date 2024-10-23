@@ -1,3 +1,19 @@
+.todo {
+  margin-bottom: 3.2em;
+}
+
+.todo__article {
+  width: 50%;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5em 0 6em;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .todo__wrapper {
   max-width: 75em;
   margin: 0 auto;
@@ -60,15 +76,20 @@
   margin-top: 2em;
 }
 
-.todo__actions button {
+.todo__actions__button,
+.todo__actions__button--bold {
   display: inline-block;
-  font-size: 1.1em;
-  padding: 7px;
-  border-radius: 5px;
-  margin-right: 5px;
+  font-size: 1.4em;
+  padding: 0.7em;
+  border-radius: 0.5em;
+  margin-right: 0.5em;
   cursor: pointer;
   text-transform: uppercase;
   color: var(--color-main);
-  border: 1px solid var(--color-main);
+  border: 0.1em solid var(--color-main);
   background-color: transparent;
+}
+
+.todo__actions__button--bold {
+  font-weight: 600;
 }
