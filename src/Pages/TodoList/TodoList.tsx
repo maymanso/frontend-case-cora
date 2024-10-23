@@ -10,6 +10,8 @@ import { LogoCora } from "../../style/common/LogoCora/coraLogo.style";
 import { TitlePrimary, TitleTertiary } from "../../style/common/Titles/titles.style";
 import { Paragraph, Span } from "../../style/common/Paragraphs/paragraphs.style";
 import { TagStatus } from "./style/Tag/tag.style";
+import MarkdownComponent from "./components/MarkdownComponent/MarkdownComponent";
+
 
 const TodoList = () => {
   const [tasks, setTasks] = useState<TaskType[] | []>(TODO_LIST);
@@ -95,20 +97,7 @@ const TodoList = () => {
                   <TagStatus $status={task.status}>{task.status}</TagStatus>
                 </TitleTertiary>
                 <div className="todo__content">
-                  <h3 className="todo__content__title">
-                    {task.title}
-                    <span data-type={task.status}>{task.status}</span>
-                  </h3>
-                  <p className="todo__content__paragraph">{task.description}</p>
-                  {task.links && task.links.length > 0 && (
-                    <div className="todo__links">
-                      {task.links.map((link) => (
-                        <a key={link.name} target="_blank" href={link.url}>
-                          {link.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
+                  <MarkdownComponent markdownString={task.description} />
                 </div>
                 <div className="todo__actions">
                   <button
@@ -122,9 +111,7 @@ const TodoList = () => {
                       handleChangeTaskStatus(task.id, task.status)
                     }
                   >
-                    {/* <span className="todo__paragraph--bold" > */}
                     {task.status === "done" ? "pending" : "done"}
-                    {/* </span> */}
                   </button>
                 </div>
               </div>
