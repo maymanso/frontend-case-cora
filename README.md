@@ -18,7 +18,7 @@ Me chamo Mayara Manso e esse é o meu projeto do [teste de front da cora](https:
 
 # Como começar?
 
-1. Faça 0 **clone** de projeto
+1. Faça o **clone** do projeto
 
 2. Instale as dependências 
 
